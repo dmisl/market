@@ -16,7 +16,7 @@
             </a>
           </li>
         </ul>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 </header>

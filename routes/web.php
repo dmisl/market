@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminPanel;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
@@ -24,11 +25,11 @@ Route::get('autocomplete', [HomeController::class, 'autocomplete'])->name('autoc
 Route::get('search', [SearchController::class, 'index'])->name('search');
 
 Route::prefix('profile')
-->as('profile.')
 ->middleware('auth')
 ->group(function () {
         
-    Route::get('/', [ProfileController::class, 'index'])->name('index');
+    Route::get('/', [ProfileController::class, 'index'])->name('profile.index');
+    Route::post('logout', [ProfileController::class, 'logout'])->name('profile.logout');
 
 });
 
@@ -39,5 +40,13 @@ Route::middleware('guest')
     Route::post('login', [LoginController::class, 'store'])->name('login.store');
     Route::get('register', [RegisterController::class, 'index'])->name('register.index');
     Route::post('register', [RegisterController::class, 'store'])->name('register.store');
+
+});
+
+Route::prefix('admin')
+->middleware('admin')
+->group(function () {
+
+    Route::get('/', [AdminPanel::class, 'index'])->name('admin.index');
 
 });
