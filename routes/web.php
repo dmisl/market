@@ -49,4 +49,12 @@ Route::prefix('admin')
 
     Route::get('/', [AdminPanel::class, 'index'])->name('admin.index');
 
+    Route::get('users', [AdminPanel::class, 'users_index'])->name('admin.users.index');
+    Route::get('users/{id}', [AdminPanel::class, 'users_show'])->name('admin.users.show');
+    Route::put('users', [AdminPanel::class, 'users_update'])->name('admin.users.update');
+
+    Route::get('products', [AdminPanel::class, 'products_index'])->name('admin.products.index');
+    Route::get('products/{id}', [AdminPanel::class, 'products_show'])->name('admin.products.show');
+    
+    Route::get('stats', [AdminPanel::class, 'stats'])->name('admin.stats');
 });

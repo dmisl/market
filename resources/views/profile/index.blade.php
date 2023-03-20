@@ -6,7 +6,7 @@
 
 <x-container style="width: 50vw;">
     <div class="d-flex">
-        <div>
+        <div class="w-50">
             <x-title>
                 Profile
             </x-title>
@@ -32,12 +32,17 @@
         </div>
         @if(!! auth()->user()->is_admin)
         
-        <div>
+        <div class="w-50">
             <x-title>
                 <a href="{{ route('admin.index') }}">
-                    Admin Panel
+                    Admin
                 </a>
             </x-title>
+            <a href="{{ route('admin.index') }}">
+                <x-button>
+                    Admin Panel
+                </x-button>
+            </a>
         </div>
 
         @endif
